@@ -1,8 +1,9 @@
-package hotechcourse.chat.service.ChatMessage;
+package hotechcourse.chat.service.chatMessage;
 
 import hotechcourse.chat.entity.ChatMessage;
 
 public interface ChatMessageService {
 
-    ChatMessage getChatMessage();
+    Long createChatMessage();
+
 }

@@ -1,4 +1,4 @@
-package hotechcourse.chat.service.ChatMessage;
+package hotechcourse.chat.service.chatMessage;
 
 import hotechcourse.chat.entity.ChatMessage;
 import hotechcourse.chat.repository.ChatMessageRepository;
@@ -14,8 +14,7 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 
     private final ChatMessageRepository chatMessageRepository;
 
-    @Override
-    public ChatMessage getChatMessage() {
-        return new ChatMessage(null, null, null);
+    public Long createChatMessage() {
+        return 1L;
     }
 }

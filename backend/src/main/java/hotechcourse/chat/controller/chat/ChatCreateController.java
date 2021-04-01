@@ -1,6 +1,6 @@
-package hotechcourse.chat.controller;
+package hotechcourse.chat.controller.chat;
 
-import hotechcourse.chat.service.Chat.ChatService;
+import hotechcourse.chat.service.chat.ChatService;
 import lombok.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,32 +12,35 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class ChatController {
+public class ChatCreateController {
 
     private final ChatService chatService;
 
     @PostMapping("/api/v1/chat")
-    public CreateChatResponse createChat(@RequestBody @Valid CreateChatRequest request) {
+    public Response createChat(@RequestBody @Valid Request request) {
         Long chatId = chatService.createChat(request.getUsers());
-        return new CreateChatResponse(chatId);
+        return Response.builder()
+                .id(chatId)
+                .build();
     }
 
     @Data
     @NoArgsConstructor
-    static class CreateChatRequest {
+    public static class Request {
         private List<Long>  users = new ArrayList<>();
 
-        public CreateChatRequest(List<Long> users) {
+        public Request(List<Long> users) {
             this.users = users;
         }
     }
 
     @Data
     @NoArgsConstructor
-    public static class CreateChatResponse {
+    public static class Response {
         private Long    id;
 
-        public CreateChatResponse(Long id) {
+        @Builder
+        public Response(Long id) {
             this.id = id;
         }
     }

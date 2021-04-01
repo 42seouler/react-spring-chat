@@ -1,13 +1,10 @@
-package hotechcourse.chat.controller;
+package hotechcourse.chat.controller.chat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hotechcourse.chat.entity.User;
-import hotechcourse.chat.service.Chat.ChatService;
-import hotechcourse.chat.service.Chat.ChatServiceImpl;
+import hotechcourse.chat.controller.chat.ChatCreateController;
+import hotechcourse.chat.service.chat.ChatServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.anyList;
@@ -24,8 +20,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
-@WebMvcTest(ChatController.class)
-class ChatControllerTest {
+@WebMvcTest(ChatCreateController.class)
+class ChatCreateControllerTest {
 
     @MockBean
     ChatServiceImpl chatService;
@@ -43,18 +39,18 @@ class ChatControllerTest {
     }
 
     @Test
-    public void createChat() throws Exception {
+    void createChat() throws Exception {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        ChatController.CreateChatRequest createChatRequest = new ChatController.CreateChatRequest(users);
+        ChatCreateController.Request request = new ChatCreateController.Request(users);
 
         given(chatService.createChat(anyList())).willReturn(1L);
 
         mockMvc.perform(post("/api/v1/chat")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(createChatRequest)))
+                .content(objectMapper.writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)));
