@@ -9,14 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatMessageCreateDto {
+public class ChatMessageReadDto {
 
-    private Long    chatId;
-    private Long    authorId;
+    private Long    id;
+    private String  authorName;
     private String  content;
+    private Long    timestamp;
 }
-
-
-
-
-

@@ -1,6 +1,6 @@
 package hotechcourse.chat.entity;
 
-
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +21,8 @@ public class ChatMessage {
     String  content;
     Long    timestamp;
 
-    public ChatMessage(Chat chat, User author, String content, Long timestamp) {
+    @Builder
+    public ChatMessage(Chat chat, User author, String content) {
         this.chat = chat;
         this.author = author;
         this.content = content;

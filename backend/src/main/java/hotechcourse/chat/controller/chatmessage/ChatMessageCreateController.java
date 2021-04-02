@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -18,9 +19,9 @@ public class ChatMessageCreateController {
     private final ChatMessageService chatMessageService;
 
     @PostMapping("/api/v1/chatmessage")
-    public Response chatMessageCreate(@Valid Request request) {
+    public Response chatMessageCreate(@RequestBody @Valid Request request) {
         return Response.builder()
-                .chatId(chatMessageService.createChatMessage())
+                .chatMessageId(chatMessageService.createChatMessage(convertToDto(request)))
                 .build();
     }
 
@@ -44,11 +45,11 @@ public class ChatMessageCreateController {
     @NoArgsConstructor
     public static class Response {
 
-        private Long chatId;
+        private Long chatMessageId;
 
         @Builder
-        public Response(Long chatId) {
-            this.chatId = chatId;
+        public Response(Long chatMessageId) {
+            this.chatMessageId = chatMessageId;
         }
     }
 

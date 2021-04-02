@@ -34,15 +34,6 @@ public class Chat {
         this.update_at = System.currentTimeMillis();
     }
 
-    @Builder
-    public Chat(Long id, List<Long> participant, String name, Long create_at, Long update_at) {
-        this.id = id;
-        this.participant = participant;
-        this.name = name;
-        this.create_at = create_at;
-        this.update_at = update_at;
-    }
-
     @Override
     public String toString() {
         return "Chat{" +

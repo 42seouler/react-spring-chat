@@ -1,6 +1,7 @@
 package hotechcourse.chat.etc;
 
 import hotechcourse.chat.entity.Chat;
+import hotechcourse.chat.entity.ChatMessage;
 import hotechcourse.chat.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,10 @@ public class InitDb {
             userList.add(userB.getId());
             Chat chat = createChat(userList);
             em.persist(chat);
+            ChatMessage test_message = createChatMessage(chat, userA, "Test Message");
+            for (int i = 0; i < 30; i++) {
+                em.persist(test_message);
+            }
         }
 
         private User createUser(String name) {
@@ -51,6 +56,14 @@ public class InitDb {
             return Chat.builder()
                     .name("TEST CHAT")
                     .participant(userList)
+                    .build();
+        }
+
+        private ChatMessage createChatMessage(Chat chat, User author, String content) {
+            return ChatMessage.builder()
+                    .chat(chat)
+                    .author(author)
+                    .content(content)
                     .build();
         }
     }
