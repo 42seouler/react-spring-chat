@@ -5,7 +5,7 @@ import hotechcourse.chat.entity.Chat;
 import hotechcourse.chat.entity.ChatMessage;
 import hotechcourse.chat.entity.User;
 import hotechcourse.chat.repository.chatmessage.ChatMessageRepository;
-import hotechcourse.chat.repository.ChatRepository;
+import hotechcourse.chat.repository.chat.ChatRepository;
 import hotechcourse.chat.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

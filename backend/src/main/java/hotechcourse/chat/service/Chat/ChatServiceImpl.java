@@ -2,7 +2,7 @@ package hotechcourse.chat.service.chat;
 
 import hotechcourse.chat.dto.chat.ChatReadDto;
 import hotechcourse.chat.entity.Chat;
-import hotechcourse.chat.repository.ChatRepository;
+import hotechcourse.chat.repository.chat.ChatRepository;
 import hotechcourse.chat.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

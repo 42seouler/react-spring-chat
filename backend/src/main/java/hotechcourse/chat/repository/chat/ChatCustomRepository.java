@@ -1,4 +1,4 @@
-package hotechcourse.chat.repository;
+package hotechcourse.chat.repository.chat;
 
 import hotechcourse.chat.entity.Chat;
 import io.lettuce.core.dynamic.annotation.Param;

@@ -42,8 +42,8 @@ public class InitDb {
             userList.add(userB.getId());
             Chat chat = createChat(userList);
             em.persist(chat);
-            ChatMessage test_message = createChatMessage(chat, userA, "Test Message");
             for (int i = 0; i < 30; i++) {
+                ChatMessage test_message = createChatMessage(chat, userA, "Test Message " + Integer.toString(i));
                 em.persist(test_message);
             }
         }

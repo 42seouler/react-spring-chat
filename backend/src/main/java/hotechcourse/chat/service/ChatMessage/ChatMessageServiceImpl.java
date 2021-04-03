@@ -6,13 +6,12 @@ import hotechcourse.chat.entity.Chat;
 import hotechcourse.chat.entity.ChatMessage;
 import hotechcourse.chat.entity.User;
 import hotechcourse.chat.repository.chatmessage.ChatMessageRepository;
-import hotechcourse.chat.repository.ChatRepository;
+import hotechcourse.chat.repository.chat.ChatRepository;
 import hotechcourse.chat.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

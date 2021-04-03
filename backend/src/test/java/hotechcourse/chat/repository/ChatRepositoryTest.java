@@ -2,7 +2,7 @@ package hotechcourse.chat.repository;
 
 import hotechcourse.chat.entity.Chat;
 import hotechcourse.chat.entity.User;
-import org.assertj.core.api.Assertions;
+import hotechcourse.chat.repository.chat.ChatRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
